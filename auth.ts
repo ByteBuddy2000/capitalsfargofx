@@ -87,7 +87,7 @@ const authConfig: NextAuthConfig = {
       if (user) {
         token.id = user.id
         token.email = user.email
-        token.role = user.role as "USER" | "ADMIN"
+        token.role = user.role as "USER" | "ADMIN" 
         token.name = user.name || user.fullName
         token.username = user.username
         token.status = user.status as
