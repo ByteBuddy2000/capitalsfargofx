@@ -627,7 +627,7 @@ export const DepositView: React.FC<DepositViewProps> = ({
                 size="lg"
                 isLoading={isSubmitting}
                 rightIcon={<CheckCircle2 className="h-4 w-4" />}
-                className="w-full border-none bg-gradient-to-r from-blue-600 to-emerald-600 font-bold hover:from-blue-700 hover:to-emerald-700 sm:w-auto"
+                className="w-full border-none bg-linear-to-r from-blue-600 to-emerald-600 font-bold hover:from-blue-700 hover:to-emerald-700 sm:w-auto"
               >
                 I Have Sent Payment
               </Button>
@@ -675,7 +675,7 @@ export const DepositView: React.FC<DepositViewProps> = ({
             </div>
             <div className="flex justify-between">
               <span className="text-slate-500">Transaction TXID:</span>
-              <span className="max-w-[200px] truncate font-mono text-slate-800">
+              <span className="max-w-50 truncate font-mono text-slate-800">
                 {submittedDeposit.txHash}
               </span>
             </div>
