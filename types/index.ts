@@ -1,4 +1,4 @@
-export type Role = "USER" | "ADMIN"
+export type Role = "USER" | "ADMIN" | "user" | "admin" 
 export type UserRole = Role
 
 export type UserStatus = "ACTIVE" | "SUSPENDED" | "BANNED"
