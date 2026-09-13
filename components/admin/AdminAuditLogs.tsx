@@ -200,7 +200,7 @@ export const AdminAuditLogs: React.FC<AdminAuditLogsProps> = () => {
               </div>
             </div>
 
-            {selectedLog.previousState && (
+            {selectedLog.previousState !== undefined && selectedLog.previousState !== null && (
               <div>
                 <label className="mb-1 block text-[10px] font-bold text-slate-500 uppercase">
                   Previous State
@@ -211,7 +211,7 @@ export const AdminAuditLogs: React.FC<AdminAuditLogsProps> = () => {
               </div>
             )}
 
-            {selectedLog.newState && (
+            {selectedLog.newState !== undefined && selectedLog.newState !== null && (
               <div>
                 <label className="mb-1 block text-[10px] font-bold text-slate-500 uppercase">
                   New State
