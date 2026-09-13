@@ -14,6 +14,7 @@ import { Input } from "../ui/Input"
 import { Button } from "../ui/Button"
 import { useToast } from "../ui/Toast"
 import { useRouter } from "next/navigation"
+import { isAdminRole } from "@/types"
 
 interface LoginFormProps {
   onSwitchToRegister: () => void
@@ -77,7 +78,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       const session = await getSession()
       const role = String(session?.user?.role || "").toUpperCase()
 
-      if (role !== "USER" && role !== "ADMIN") {
+      if (role !== "USER" && !isAdminRole(role)) {
         const message = "Your account role could not be verified. Please try again."
         setError(message)
         toastError("Authentication Failed", message)
@@ -85,7 +86,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       }
 
       success("Authentication Successful", "Welcome back to CapitalsFargoFX.")
-      router.push(role === "ADMIN" ? "/admin" : "/dashboard")
+      router.push(isAdminRole(role) ? "/admin" : "/dashboard")
     } catch (requestError) {
       const message =
         requestError instanceof Error

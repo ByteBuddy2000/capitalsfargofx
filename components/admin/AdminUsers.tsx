@@ -1,6 +1,7 @@
+// AdminUsers.tsx
 import React, { useState } from "react"
 import { Users, Search } from "lucide-react"
-import { User, UserStatus } from "../../types"
+import { isAdminRole, User, UserStatus } from "../../types"
 import { authApi } from "../../lib/api"
 import { Button } from "../ui/Button"
 import { Input } from "../ui/Input"
@@ -45,7 +46,14 @@ export const AdminUsers: React.FC<AdminUsersProps> = ({ currentUser }) => {
       )
   }, [toastError])
 
-  const filtered = allUsers.filter((u) => {
+  const visibleUsers = allUsers.filter((u) => {
+    const currentRole = String(currentUser.role).trim().toUpperCase()
+    const userRole = String(u.role).trim().toUpperCase()
+
+    return !(currentRole === "ADMIN" && userRole === "SUPER ADMIN")
+  })
+
+  const filtered = visibleUsers.filter((u) => {
     if (!searchTerm.trim()) return true
     const q = searchTerm.toLowerCase()
     return (
@@ -136,110 +144,146 @@ export const AdminUsers: React.FC<AdminUsersProps> = ({ currentUser }) => {
         </div>
       </div>
 
-      {/* Users Table */}
-      <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-sm">
+      {/* Users DataTable */}
+      <div className="rounded-3xl border border-slate-800 bg-slate-900 shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead>
-              <tr className="border-b border-slate-800 bg-slate-950/80 text-[10px] font-bold tracking-wider text-slate-400 uppercase">
-                <th className="py-3.5 pl-6">Investor</th>
-                <th className="py-3.5">Available Balance</th>
-                <th className="py-3.5">Locked In Plans</th>
-                <th className="py-3.5">Upline Sponsor</th>
-                <th className="py-3.5">Role & Status</th>
-                <th className="py-3.5">Registered</th>
-                <th className="py-3.5 pr-6 text-right">Management Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800">
-              {filtered.map((u) => (
-                <tr
-                  key={u.id}
-                  className="transition-colors hover:bg-slate-800/50"
-                >
-                  <td className="py-4 pl-6">
-                    <div className="flex items-center gap-2.5">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-blue-700 bg-blue-900/60 text-xs font-bold text-blue-300">
-                        {u.fullName.charAt(0)}
-                      </div>
-                      <div>
-                        <span className="block font-bold text-white">
-                          {u.fullName}
-                        </span>
-                        <span className="font-mono text-[11px] text-slate-400">
-                          @{u.username} • {u.email}
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-4 font-mono text-sm font-bold text-emerald-400">
-                    $
-                    {(u?.availableBalance || 0).toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                    })}
-                  </td>
-                  <td className="py-4 font-mono text-slate-300">
-                    $
-                    {(u?.earningBalance || 0).toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                    })}
-                  </td>
-                  <td className="py-4 font-mono text-[11px] text-slate-400">
-                    {u.uplineUsername
-                      ? `@${u.uplineUsername}`
-                      : "Direct (None)"}
-                  </td>
-                  <td className="py-4">
-                    <div className="flex items-center gap-1.5">
-                      <span
-                        className={`rounded px-2 py-0.5 text-[10px] font-black uppercase ${
-                          u.role === "ADMIN"
-                            ? "border border-amber-800 bg-amber-950 text-amber-300"
-                            : "bg-slate-800 text-slate-300"
-                        }`}
-                      >
-                        {u.role}
-                      </span>
-                      <Badge
-                        variant={u.status === "ACTIVE" ? "success" : "danger"}
-                      >
-                        {u.status}
-                      </Badge>
-                    </div>
-                  </td>
-                  <td className="py-4 font-mono text-[11px] text-slate-400">
-                    {new Date(u.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="py-4 pr-6 text-right">
-                    <div className="flex items-center justify-end gap-1.5">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => handleOpenAdjust(u)}
-                        className="border-slate-700 bg-slate-800 px-2.5 py-1 text-xs text-amber-300 hover:bg-slate-700"
-                      >
-                        Adjust Balance
-                      </Button>
-
-                      {u.id !== currentUser.id && (
-                        <select
-                          value={u.status}
-                          onChange={(e) =>
-                            handleToggleStatus(u, e.target.value as UserStatus)
-                          }
-                          className="rounded-lg border border-slate-800 bg-slate-950 px-2 py-1 text-xs font-semibold text-slate-300 focus:outline-none"
-                        >
-                          <option value="ACTIVE">ACTIVE</option>
-                          <option value="SUSPENDED">SUSPENDED</option>
-                          <option value="BANNED">BANNED</option>
-                        </select>
-                      )}
-                    </div>
-                  </td>
+          <div className="min-w-[1400px]">
+            <table className="w-full table-auto text-left text-xs text-slate-300">
+              <thead className="sticky top-0 z-10">
+                <tr className="border-b border-slate-800 bg-slate-950 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  <th className="whitespace-nowrap px-6 py-4">Investor</th>
+                  <th className="whitespace-nowrap px-4 py-4">
+                    Available Balance
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-4">
+                    Locked In Plans
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-4">
+                    Upline Sponsor
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-4">
+                    Role & Status
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-4">
+                    Registered
+                  </th>
+                  <th className="whitespace-nowrap px-6 py-4 text-right">
+                    Management Actions
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody className="divide-y divide-slate-800">
+                {filtered.map((u) => (
+                  <tr
+                    key={u.id}
+                    className="transition-colors hover:bg-slate-800/50"
+                  >
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="flex items-center gap-2.5">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-blue-700 bg-blue-900/60 text-xs font-bold text-blue-300">
+                          {u.fullName.charAt(0)}
+                        </div>
+
+                        <div className="min-w-0">
+                          <span className="block font-bold text-white">
+                            {u.fullName}
+                          </span>
+
+                          <span className="block truncate font-mono text-[11px] text-slate-400">
+                            @{u.username} • {u.email}
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td className="whitespace-nowrap px-4 py-4 font-mono text-sm font-bold text-emerald-400">
+                      $
+                      {(u?.availableBalance || 0).toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                      })}
+                    </td>
+
+                    <td className="whitespace-nowrap px-4 py-4 font-mono text-slate-300">
+                      $
+                      {(u?.earningBalance || 0).toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                      })}
+                    </td>
+
+                    <td className="whitespace-nowrap px-4 py-4 font-mono text-[11px] text-slate-400">
+                      {u.uplineUsername
+                        ? `@${u.uplineUsername}`
+                        : "Direct (None)"}
+                    </td>
+
+                    <td className="whitespace-nowrap px-4 py-4">
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className={`rounded px-2 py-0.5 text-[10px] font-black uppercase ${isAdminRole(u.role)
+                              ? "border border-amber-800 bg-amber-950 text-amber-300"
+                              : "bg-slate-800 text-slate-300"
+                            }`}
+                        >
+                          {u.role}
+                        </span>
+
+                        <Badge
+                          variant={
+                            u.status === "ACTIVE" ? "success" : "danger"
+                          }
+                        >
+                          {u.status}
+                        </Badge>
+                      </div>
+                    </td>
+
+                    <td className="whitespace-nowrap px-4 py-4 font-mono text-[11px] text-slate-400">
+                      {new Date(u.createdAt).toLocaleDateString()}
+                    </td>
+
+                    <td className="whitespace-nowrap px-6 py-4 text-right">
+                      <div className="flex items-center justify-end gap-2">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleOpenAdjust(u)}
+                          className="border-slate-700 bg-slate-800 px-2.5 py-1 text-xs text-amber-300 hover:bg-slate-700"
+                        >
+                          Adjust Balance
+                        </Button>
+
+                        {u.id !== currentUser.id && (
+                          <select
+                            value={u.status}
+                            onChange={(e) =>
+                              handleToggleStatus(
+                                u,
+                                e.target.value as UserStatus
+                              )
+                            }
+                            className="rounded-lg border border-slate-800 bg-slate-950 px-2 py-1 text-xs font-semibold text-slate-300 focus:outline-none"
+                          >
+                            <option value="ACTIVE">ACTIVE</option>
+                            <option value="SUSPENDED">SUSPENDED</option>
+                            <option value="BANNED">BANNED</option>
+                          </select>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between border-t border-slate-800 px-6 py-3 text-xs text-slate-400">
+          <span>
+            Showing {filtered.length} of {visibleUsers.length} users
+          </span>
+
         </div>
       </div>
 

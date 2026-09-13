@@ -13,7 +13,7 @@ import { AdminWallets } from "@/components/admin/AdminWallets"
 import { AdminSettings } from "@/components/admin/AdminSettings"
 import { AdminAuditLogs } from "@/components/admin/AdminAuditLogs"
 import { ToastProvider } from "@/components/ui/Toast"
-import type { User } from "@/types"
+import { isAdminRole, type User } from "@/types"
 import { authApi } from "@/lib/api"
 
 const emptyAdminUser: User = {
@@ -44,7 +44,7 @@ export default function AdminPage() {
     void authApi
       .me()
       .then((user) => {
-        if (user.role === "ADMIN") setAdminUser(user)
+        if (isAdminRole(user.role)) setAdminUser(user)
       })
       .catch(() => undefined)
   }, [])

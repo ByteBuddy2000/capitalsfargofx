@@ -98,7 +98,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
       {/* Top Header */}
       <header className="sticky top-0 z-30 border-b border-slate-800 bg-slate-900 shadow-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-full items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileDrawerOpen(!mobileDrawerOpen)}
@@ -113,9 +113,9 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
               </div>
               <div>
                 <span className="text-base font-extrabold tracking-tight text-white">
-                  CapitalsFargo<span className="text-amber-400">Admin</span>
+                  CapitalsFargoFX<span className="text-amber-400">Admin</span>
                 </span>
-                <span className="ml-2 hidden rounded-md border border-amber-800 bg-amber-950 px-2 py-0.5 text-[10px] font-bold tracking-wider text-amber-300 uppercase sm:inline-block">
+                <span className="ml-2 hidden rounded-md border border-amber-800 bg-amber-950 px-2 py-0.5 text-[10px] font-bold tracking-wider text-amber-300 uppercase ">
                   Institutional Security Suite
                 </span>
               </div>
@@ -142,7 +142,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       </header>
 
       {/* Main Container */}
-      <div className="mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-start gap-8 px-4 py-8 sm:px-6 lg:grid-cols-12 lg:px-8">
+      <div className="mx-auto grid w-full max-w-full flex-1 grid-cols-1 items-start gap-8 px-4 py-8 sm:px-6 lg:grid-cols-12 lg:px-8">
         {/* Desktop Admin Sidebar */}
         <aside className="sticky top-24 hidden rounded-3xl border border-slate-800 bg-slate-900 p-4 shadow-sm lg:col-span-3 lg:block">
           <div className="mb-4 flex items-center gap-3 rounded-2xl border border-slate-800 bg-slate-950 px-3 py-3">

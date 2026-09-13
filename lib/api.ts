@@ -265,6 +265,15 @@ export const authApi = {
     })
     return result.settings
   },
+  async changePassword(payload: {
+    currentPassword: string
+    newPassword: string
+  }) {
+    return request<{ message: string }>("/admin/change-password", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    })
+  },
   async adminAuditLogs() {
     const result = await request<{ logs: Array<Record<string, unknown>> }>("/admin/audit")
     return result.logs

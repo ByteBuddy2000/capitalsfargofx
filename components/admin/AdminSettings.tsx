@@ -5,6 +5,10 @@ import {
   ShieldAlert,
   Globe,
   CheckCircle2,
+  KeyRound,
+  Lock,
+  Eye,
+  EyeOff,
 } from "lucide-react"
 import { User, PlatformSettings } from "../../types"
 import { authApi } from "../../lib/api"
@@ -12,11 +16,21 @@ import { Button } from "../ui/Button"
 import { Input } from "../ui/Input"
 import { useToast } from "../ui/Toast"
 
+
 interface AdminSettingsProps {
   currentUser: User
 }
 
 export const AdminSettings: React.FC<AdminSettingsProps> = () => {
+
+  const [currentPassword, setCurrentPassword] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false)
+  const [showNewPassword, setShowNewPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [isUpdatingPassword, setIsUpdatingPassword] = useState(false)
+
   const [settings, setSettings] = useState<PlatformSettings>({
     platformName: "CapitalsFargoFX",
     supportEmail: "",
@@ -43,6 +57,57 @@ export const AdminSettings: React.FC<AdminSettingsProps> = () => {
       })
       .catch((error) => info("Settings Error", error instanceof Error ? error.message : "Unable to save settings."))
       .finally(() => setIsSaving(false))
+  }
+
+  const handleUpdatePassword = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault()
+
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      info("Validation Error", "All password fields are required.")
+      return
+    }
+
+    if (newPassword !== confirmPassword) {
+      info("Validation Error", "New passwords do not match.")
+      return
+    }
+
+    if (newPassword.length < 8) {
+      info(
+        "Validation Error",
+        "Password must be at least 8 characters long."
+      )
+      return
+    }
+
+    setIsUpdatingPassword(true)
+
+    try {
+      await authApi.changePassword({
+        currentPassword,
+        newPassword,
+      })
+
+      success(
+        "Password Updated",
+        "Your administrator password has been changed successfully."
+      )
+
+      setCurrentPassword("")
+      setNewPassword("")
+      setConfirmPassword("")
+    } catch (error) {
+      info(
+        "Password Update Failed",
+        error instanceof Error
+          ? error.message
+          : "Unable to update password."
+      )
+    } finally {
+      setIsUpdatingPassword(false)
+    }
   }
 
   return (
@@ -110,6 +175,101 @@ export const AdminSettings: React.FC<AdminSettingsProps> = () => {
               }
               required
             />
+          </div>
+        </div>
+
+        {/* Security & Password Management */}
+        <div className="space-y-6 rounded-3xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+          <div className="flex items-center gap-2 border-b border-slate-800 pb-4">
+            <KeyRound className="h-5 w-5 text-rose-400" />
+            <h3 className="text-base font-bold text-white">
+              Security & Password Management
+            </h3>
+          </div>
+
+          <form
+            onSubmit={handleUpdatePassword}
+            className="grid grid-cols-1 gap-4 lg:grid-cols-3"
+          >
+            <Input
+              label="Current Password"
+              type={showCurrentPassword ? "text" : "password"}
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              leftIcon={<Lock className="h-4 w-4" />}
+              rightIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowCurrentPassword((visible) => !visible)}
+                  aria-label={showCurrentPassword ? "Hide current password" : "Show current password"}
+                  aria-pressed={showCurrentPassword}
+                  className="cursor-pointer rounded-md p-1 text-slate-400 transition-colors hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                >
+                  {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              }
+              required
+            />
+
+            <Input
+              label="New Password"
+              type={showNewPassword ? "text" : "password"}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              leftIcon={<Lock className="h-4 w-4" />}
+              rightIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowNewPassword((visible) => !visible)}
+                  aria-label={showNewPassword ? "Hide new password" : "Show new password"}
+                  aria-pressed={showNewPassword}
+                  className="cursor-pointer rounded-md p-1 text-slate-400 transition-colors hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                >
+                  {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              }
+              required
+            />
+
+            <Input
+              label="Confirm New Password"
+              type={showConfirmPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              leftIcon={<Lock className="h-4 w-4" />}
+              rightIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword((visible) => !visible)}
+                  aria-label={showConfirmPassword ? "Hide confirmed password" : "Show confirmed password"}
+                  aria-pressed={showConfirmPassword}
+                  className="cursor-pointer rounded-md p-1 text-slate-400 transition-colors hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                >
+                  {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              }
+              required
+            />
+
+            <div className="lg:col-span-3 flex justify-end">
+              <Button
+                type="submit"
+                variant="outline"
+                isLoading={isUpdatingPassword}
+                leftIcon={<ShieldAlert className="h-4 w-4" />}
+                className="border-rose-700 bg-rose-950 text-rose-300 hover:bg-rose-900"
+              >
+                Update Password
+              </Button>
+            </div>
+          </form>
+
+          <div className="rounded-2xl border border-amber-900/40 bg-amber-950/20 p-4">
+            <p className="text-xs text-amber-300">
+              For security reasons, administrator password changes require your
+              current password. After updating, you may be asked to sign in again
+              on other active sessions.
+            </p>
           </div>
         </div>
 

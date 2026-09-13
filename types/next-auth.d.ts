@@ -8,7 +8,7 @@ declare module "next-auth" {
       _id?: string
       name?: string | null
       email: string
-      role: "USER" | "ADMIN" | "user" | "admin"
+      role: "USER" | "ADMIN" | "SUPER ADMIN" | "user" | "admin" | "super admin"
       username?: string
       fullName?: string
       status?: "ACTIVE" | "SUSPENDED" | "BANNED"
@@ -23,7 +23,7 @@ declare module "next-auth" {
     id: string
     _id?: string
     email: string
-    role: "USER" | "ADMIN" | "user" | "admin"
+    role: "USER" | "ADMIN" | "SUPER ADMIN" | "user" | "admin" | "super admin"
     username?: string
     fullName?: string
     status?: "ACTIVE" | "SUSPENDED" | "BANNED"
@@ -39,7 +39,7 @@ declare module "next-auth/jwt" {
     id?: string
     email?: string | null
     name?: string | null
-    role?: "USER" | "ADMIN" | "user" | "admin"
+    role?: "USER" | "ADMIN" | "SUPER ADMIN" | "user" | "admin" | "super admin"
     username?: string
     status?: "ACTIVE" | "SUSPENDED" | "BANNED"
   }

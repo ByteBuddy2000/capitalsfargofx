@@ -3,7 +3,7 @@ Create a default test account
 
 Name: Pedro Duarte
 
-Email: pedro44@test.com
+Email: pedroduarte@test.com
 
-Password: Pedro44@123
+Password: password123
 

@@ -6,6 +6,8 @@ import { getToken } from "next-auth/jwt";
 const AUTH_ROUTES = ["/dashboard", "/admin"];
 
 const normalizeRole = (role: unknown) => String(role ?? "").toUpperCase();
+const isAdminRole = (role: string) =>
+  role === "ADMIN" || role === "SUPER ADMIN";
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -21,7 +23,7 @@ export async function middleware(request: NextRequest) {
   if (token && pathname === "/login") {
     const role = normalizeRole(token.role);
 
-    if (role === "ADMIN") {
+    if (isAdminRole(role)) {
       return NextResponse.redirect(
         new URL("/admin", request.url)
       );
@@ -56,7 +58,7 @@ export async function middleware(request: NextRequest) {
     // ADMIN AREA
     // ==========================================================
     if (pathname.startsWith("/admin")) {
-      if (role !== "ADMIN") {
+      if (!isAdminRole(role)) {
         return NextResponse.redirect(
           new URL("/dashboard", request.url)
         );
@@ -69,7 +71,7 @@ export async function middleware(request: NextRequest) {
     // USER DASHBOARD
     // ==========================================================
     if (pathname.startsWith("/dashboard")) {
-      if (role === "ADMIN") {
+      if (isAdminRole(role)) {
         return NextResponse.redirect(
           new URL("/admin", request.url)
         );
@@ -85,7 +87,7 @@ export async function middleware(request: NextRequest) {
   if (pathname === "/" && token) {
     const role = normalizeRole(token.role);
 
-    if (role === "ADMIN") {
+    if (isAdminRole(role)) {
       return NextResponse.redirect(
         new URL("/admin", request.url)
       );

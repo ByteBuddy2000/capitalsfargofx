@@ -42,7 +42,11 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({
     void authApi
       .adminOverview()
       .then((data) => {
-        setUsers(data.users as unknown as User[])
+        setUsers(
+          (data.users as unknown as User[]).filter(
+            (user) => user.role === "USER" || user.role === "user"
+          )
+        )
         setDeposits(
           data.deposits.map((deposit) => ({
             ...deposit,

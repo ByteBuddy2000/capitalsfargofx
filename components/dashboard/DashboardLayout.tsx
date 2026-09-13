@@ -15,7 +15,7 @@ import {
   Menu,
   ChevronRight,
 } from "lucide-react"
-import { User } from "../../types"
+import { isAdminRole, User } from "../../types"
 import { storage } from "../../lib/storage"
 import { Button } from "../ui/Button"
 import Image from "next/image"
@@ -362,7 +362,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             </div>
 
             {/* Admin Switcher */}
-            {currentUser.role === "ADMIN" && (
+            {isAdminRole(currentUser.role) && (
               <Button
                 size="sm"
                 variant="dark"
@@ -416,7 +416,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                     Account Settings
                   </button>
 
-                  {currentUser.role === "ADMIN" && (
+                  {isAdminRole(currentUser.role) && (
                     <button
                       onClick={() => {
                         setUserDropdownOpen(false)

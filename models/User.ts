@@ -1,7 +1,13 @@
 // models/User.ts
 import mongoose, { type Model, type Schema, type Types } from "mongoose"
 
-export type UserRole = "USER" | "ADMIN"
+export type UserRole =
+  | "USER"
+  | "ADMIN"
+  | "SUPER ADMIN"
+  | "user"
+  | "admin"
+  | "super admin"
 export type UserStatus = "ACTIVE" | "SUSPENDED" | "BANNED"
 export type KycStatus = "VERIFIED" | "PENDING" | "UNVERIFIED"
 
@@ -47,7 +53,11 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
       lowercase: true,
     },
     passwordHash: { type: String, required: true, select: false },
-    role: { type: String, enum: ["USER", "ADMIN"], default: "USER" },
+    role: {
+      type: String,
+      enum: ["USER", "ADMIN", "SUPER ADMIN", "user", "admin", "super admin"],
+      default: "USER",
+    },
     status: {
       type: String,
       enum: ["ACTIVE", "SUSPENDED", "BANNED"],

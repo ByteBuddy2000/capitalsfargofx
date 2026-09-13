@@ -1,5 +1,6 @@
 // lib/auth.ts - Auth utilities (requires auth from root)a
 import { auth } from "@/auth"
+import { isAdminRole } from "@/types"
 
 /**
  * Server-side utility: Get authenticated user or throw 401
@@ -22,7 +23,7 @@ export async function requireAuth() {
 export async function requireAdmin() {
   const user = await requireAuth()
 
-  if (user.role !== "ADMIN") {
+  if (!isAdminRole(user.role)) {
     throw new Error("Forbidden: Admin role required")
   }
 
