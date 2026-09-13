@@ -2,12 +2,6 @@ import React, { useState } from "react"
 import {
   TrendingUp,
   Activity,
-  ShieldCheck,
-  ArrowUpRight,
-  Clock,
-  Sparkles,
-  Zap,
-  CheckCircle2,
 } from "lucide-react"
 
 export const AlphaTrackerCard: React.FC = () => {

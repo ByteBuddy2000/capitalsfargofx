@@ -14,7 +14,6 @@ import { User } from "../../types"
 import { storage } from "../../lib/storage"
 import { Button } from "../ui/Button"
 import { Input } from "../ui/Input"
-import { Badge } from "../ui/Badge"
 import { useToast } from "../ui/Toast"
 import Image from "next/image"
 

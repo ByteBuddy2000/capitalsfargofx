@@ -1,16 +1,12 @@
 import React from "react"
 import { motion } from "motion/react"
 import {
-  ShieldCheck,
   TrendingUp,
   ArrowRight,
   CheckCircle2,
-  Lock,
-  Coins,
+
   Zap,
-  BarChart3,
-  Sparkles,
-  Layers,
+  
   ArrowUpRight,
 } from "lucide-react"
 import { Button } from "../ui/Button"

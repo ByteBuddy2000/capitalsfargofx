@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Mail, ArrowRight, CheckCircle2, KeyRound } from "lucide-react"
+import { Mail, ArrowRight, CheckCircle2 } from "lucide-react"
 import { Modal } from "../ui/Modal"
 import { Input } from "../ui/Input"
 import { Button } from "../ui/Button"

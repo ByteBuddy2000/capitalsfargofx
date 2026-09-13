@@ -8,16 +8,14 @@ import {
   Send,
   Clock,
   ShieldCheck,
-  MessageSquare,
   CheckCircle2,
   ArrowRight,
-  User,
+  
   AlertCircle,
 } from "lucide-react"
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs"
 
 export const ContactPage: React.FC = () => {
-  const router = useRouter()
   const [fullName, setFullName] = useState("")
   const [email, setEmail] = useState("")
   const [category, setCategory] = useState("Investment Plans")

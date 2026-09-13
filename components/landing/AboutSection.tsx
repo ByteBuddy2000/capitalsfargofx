@@ -6,7 +6,6 @@ import {
   Activity,
   Lock,
   Cpu,
-  CheckCircle2,
   ArrowRight,
   TrendingUp,
 } from "lucide-react"

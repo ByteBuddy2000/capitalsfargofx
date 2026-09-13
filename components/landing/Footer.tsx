@@ -1,5 +1,5 @@
 import React from "react"
-import { ShieldCheck, Mail, Send, Lock, ArrowUpRight } from "lucide-react"
+import { ShieldCheck, Mail, Send, ArrowUpRight } from "lucide-react"
 import { PlatformSettings } from "../../types"
 import { storage } from "../../lib/storage"
 

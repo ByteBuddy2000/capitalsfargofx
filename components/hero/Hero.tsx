@@ -5,11 +5,6 @@ import { useRouter } from "next/navigation"
 import { AlphaTrackerCard } from "./AlphaTrackerCard"
 import {
   ArrowRight,
-  Shield,
-  Layers,
-  Clock,
-  Coins,
-  Sparkles,
   ChevronRight,
   CheckCircle,
 } from "lucide-react"

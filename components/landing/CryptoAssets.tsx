@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "motion/react"
-import { Coins, CheckCircle2, Zap } from "lucide-react"
+import { Coins, CheckCircle2 } from "lucide-react"
 import { CryptoWalletConfig } from "../../types"
 import { storage } from "../../lib/storage"
 
@@ -9,7 +9,6 @@ interface CryptoAssetsProps {
 }
 
 export const CryptoAssets: React.FC<CryptoAssetsProps> = ({ wallets }) => {
-  const currentWallets = wallets || storage.getWallets()
   const assetDetails = [
     {
       symbol: "BTC",

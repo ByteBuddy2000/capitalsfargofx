@@ -9,11 +9,8 @@ import {
   UserPlus,
   Layers,
   TrendingUp,
-  ArrowRight,
   CheckCircle2,
-  ShieldCheck,
-  Clock,
-  ArrowDownRight,
+
   Workflow,
 } from "lucide-react"
 
@@ -88,7 +85,7 @@ export const HowItWorksPage: React.FC = () => {
           <div className="relative grid grid-cols-1 gap-8 md:grid-cols-3">
             {steps.map((step, idx) => (
               <div
-                key={step.number}
+                key={idx}
                 className="group relative flex flex-col justify-between rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-sm transition-all hover:border-blue-500/40 hover:shadow-xl"
               >
                 <div>

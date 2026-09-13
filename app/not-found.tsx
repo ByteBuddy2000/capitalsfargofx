@@ -1,8 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "motion/react"
-import { Home, Search, ArrowLeft } from "lucide-react"
+import { Home, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/Button"
 

@@ -5,7 +5,6 @@ import Link from "next/link"
 import { RegisterForm } from "@/components/auth/RegisterForm"
 import { LegalModal, type LegalDocType } from "@/components/legal/LegalModal"
 import { ToastProvider } from "@/components/ui/Toast"
-import type { User } from "@/types"
 import Image from "next/image"
 
 export default function RegisterPage() {
@@ -17,7 +16,7 @@ export default function RegisterPage() {
     setLegalModalOpen(true)
   }
 
-  const handleSuccess = (_user: User) => {
+  const handleSuccess = () => {
     window.location.assign("/dashboard")
   }
 

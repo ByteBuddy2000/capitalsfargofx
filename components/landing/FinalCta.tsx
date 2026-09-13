@@ -1,5 +1,4 @@
 import React from "react"
-import { motion } from "motion/react"
 import { ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react"
 import { Button } from "../ui/Button"
 

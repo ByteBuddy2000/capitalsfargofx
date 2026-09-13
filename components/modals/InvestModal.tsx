@@ -8,10 +8,8 @@ import {
   Copy,
   Check,
   ShieldCheck,
-  Clock,
-  TrendingUp,
+
   ArrowRight,
-  AlertCircle,
 } from "lucide-react"
 
 interface InvestModalProps {

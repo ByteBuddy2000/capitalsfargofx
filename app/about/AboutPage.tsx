@@ -6,16 +6,14 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs"
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection"
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection"
 import {
-  ShieldCheck,
+  
   Cpu,
   Activity,
   Lock,
-  Layers,
-  Users,
+
   CheckCircle2,
   ArrowRight,
   Database,
-  Building,
 } from "lucide-react"
 
 export const AboutPage: React.FC = () => {
@@ -146,7 +144,7 @@ export const AboutPage: React.FC = () => {
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/80 p-3.5">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-400" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
                   <div>
                     <div className="text-sm font-bold text-white">
                       Predefined Contract Terms
@@ -159,7 +157,7 @@ export const AboutPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/80 p-3.5">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-400" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" />
                   <div>
                     <div className="text-sm font-bold text-white">
                       Instant Settlement Execution
@@ -173,7 +171,7 @@ export const AboutPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/80 p-3.5">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-indigo-400" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-indigo-400" />
                   <div>
                     <div className="text-sm font-bold text-white">
                       5.00% Affiliate Downline

@@ -27,9 +27,6 @@ interface VideoModalProps {
   videoSrc: string
 }
 
-interface VideoShowcaseCardProps {
-  onClick: () => void
-}
 
 /* -------------------------------------------------------------------------- */
 /* Protected Video Props                                                      */

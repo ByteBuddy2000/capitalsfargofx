@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import {
   CURRENT_PLANS,
   formatCurrency,
-  formatCurrencyWithDecimals,
   calculateYield,
 } from "../../lib/plans"
 import {
   Calculator,
-  TrendingUp,
-  Clock,
-  ShieldCheck,
+
   Users,
-  Euro,
   ArrowRight,
   Info,
   AlertCircle,
-  Sparkles,
 } from "lucide-react"
 
 interface YieldSimulatorProps {

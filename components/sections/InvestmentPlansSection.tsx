@@ -6,10 +6,8 @@ import { CURRENT_PLANS, formatCurrency } from "../../lib/plans"
 import {
   Sparkles,
   Clock,
-  ShieldCheck,
-  Users,
+
   ArrowRight,
-  TrendingUp,
   Check,
   Layers,
 } from "lucide-react"

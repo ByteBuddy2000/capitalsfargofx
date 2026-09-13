@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import {
-  ShieldCheck,
   Menu,
   X,
   ChevronRight,
   LayoutDashboard,
   Lock,
   ArrowUpRight,
-  TrendingUp,
-  UserCheck,
+
 } from "lucide-react"
 import { User } from "../../types"
 import { Button } from "../ui/Button"
@@ -32,7 +30,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateDashboard,
   onNavigateAdmin,
   onNavigateSection,
-  onLogout,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
