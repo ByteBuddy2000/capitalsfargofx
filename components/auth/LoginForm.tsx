@@ -9,7 +9,7 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react"
-import { signIn } from "next-auth/react"
+import { getSession, signIn } from "next-auth/react"
 import { Input } from "../ui/Input"
 import { Button } from "../ui/Button"
 import { useToast } from "../ui/Toast"
@@ -74,8 +74,18 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         return
       }
 
+      const session = await getSession()
+      const role = String(session?.user?.role || "").toUpperCase()
+
+      if (role !== "USER" && role !== "ADMIN") {
+        const message = "Your account role could not be verified. Please try again."
+        setError(message)
+        toastError("Authentication Failed", message)
+        return
+      }
+
       success("Authentication Successful", "Welcome back to CapitalsFargoFX.")
-      router.push("/dashboard")
+      router.push(role === "ADMIN" ? "/admin" : "/dashboard")
     } catch (requestError) {
       const message =
         requestError instanceof Error

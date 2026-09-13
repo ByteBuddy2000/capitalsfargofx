@@ -8,7 +8,7 @@ declare module "next-auth" {
       _id?: string
       name?: string | null
       email: string
-      role: "USER" | "ADMIN"
+      role: "USER" | "ADMIN" | "user" | "admin"
       username?: string
       fullName?: string
       status?: "ACTIVE" | "SUSPENDED" | "BANNED"
