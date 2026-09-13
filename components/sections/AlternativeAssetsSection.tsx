@@ -31,7 +31,7 @@ export const AlternativeAssetsSection: React.FC = () => {
 
           <button
             onClick={() => {
-              router.push("/assets")
+              router.push("/fiat-assets")
               window.scrollTo({ top: 0, behavior: "smooth" })
             }}
             className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-400 transition-colors hover:text-blue-300"

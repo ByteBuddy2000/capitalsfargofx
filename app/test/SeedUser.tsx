@@ -20,10 +20,10 @@ export default function SeedUser() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          fullName: "Pedro Duarte",
-          username: "Pedro44",
-          email: "pedro44@test.com",
-          password: "Pedro44@123",
+          fullName: "CapitalsFargo Admin",
+          username: "CapitalsFargoFX",
+          email: "Admin@capitalsfargofx.com",
+          password: "Capitalsfargofxadmin@123",
           btcWallet: "",
           ethWallet: "",
           usdtWallet: "",
@@ -38,7 +38,7 @@ export default function SeedUser() {
       }
 
       setMessage(
-        `Test user "${data.user?.username || "Pedro44"}" created successfully.`
+        `Test user "${data.user?.username}" created successfully.`
       )
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to seed test user.")
@@ -70,22 +70,22 @@ export default function SeedUser() {
           <div className="mt-4 space-y-1.5 text-xs">
             <p>
               <span className="font-semibold text-slate-500">Name:</span>{" "}
-              <span className="text-slate-700">Pedro Duarte</span>
+              <span className="text-slate-700">CapitalsFargo Admin</span>
             </p>
 
             <p>
               <span className="font-semibold text-slate-500">Username:</span>{" "}
-              <span className="text-slate-700">Pedro44</span>
+              <span className="text-slate-700">CapitalsFargoFX</span>
             </p>
 
             <p>
               <span className="font-semibold text-slate-500">Email:</span>{" "}
-              <span className="text-slate-700">pedro44@test.com</span>
+              <span className="text-slate-700">Admin@capitalsfargofx.com</span>
             </p>
 
             <p>
               <span className="font-semibold text-slate-500">Password:</span>{" "}
-              <span className="font-mono text-slate-700">Pedro44@123</span>
+              <span className="font-mono text-slate-700">Capitalsfargofxadmin@123</span>
             </p>
           </div>
         </div>
