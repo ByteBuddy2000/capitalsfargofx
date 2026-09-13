@@ -1,5 +1,6 @@
 // auth.ts - NextAuth v5 configuration (project root)
 import type { NextAuthConfig } from "next-auth"
+import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import { connectToDB } from "@/lib/connectToDB"
@@ -126,4 +127,6 @@ export const authOptions: NextAuthConfig = {
 
   secret: process.env.NEXTAUTH_SECRET,
 }
+
+export const { handlers, auth } = NextAuth(authOptions)
 
