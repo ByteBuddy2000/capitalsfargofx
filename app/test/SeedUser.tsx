@@ -20,10 +20,10 @@ export default function SeedUser() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          fullName: "CapitalsFargo Admin",
-          username: "CapitalsFargoFX",
-          email: "Admin@capitalsfargofx.com",
-          password: "Capitalsfargofxadmin@123",
+          fullName: "Pedro Duarte",
+          username: "PedroDuarte47",
+          email: "pedroduarte@test.com",
+          password: "password123",
           btcWallet: "bc1qncxe3zev45q9w2punqn7rvdcqq206mnmwe7x2s",
           ethWallet: "0xC821472bBAfB1e0dc164e6736a2F1CCBa2270D5c",
           usdtWallet: "0xC821472bBAfB1e0dc164e6736a2F1CCBa2270D5c",
@@ -70,22 +70,22 @@ export default function SeedUser() {
           <div className="mt-4 space-y-1.5 text-xs">
             <p>
               <span className="font-semibold text-slate-500">Name:</span>{" "}
-              <span className="text-slate-700">CapitalsFargo Admin</span>
+              <span className="text-slate-700">Pedro Duarte</span>
             </p>
 
             <p>
               <span className="font-semibold text-slate-500">Username:</span>{" "}
-              <span className="text-slate-700">CapitalsFargoFX</span>
+              <span className="text-slate-700">PedroDuarte47</span>
             </p>
 
             <p>
               <span className="font-semibold text-slate-500">Email:</span>{" "}
-              <span className="text-slate-700">Admin@capitalsfargofx.com</span>
+              <span className="text-slate-700">pedroduarte@test.com</span>
             </p>
 
             <p>
               <span className="font-semibold text-slate-500">Password:</span>{" "}
-              <span className="font-mono text-slate-700">Capitalsfargofxadmin@123</span>
+              <span className="font-mono text-slate-700">password123</span>
             </p>
           </div>
         </div>

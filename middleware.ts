@@ -5,6 +5,8 @@ import { getToken } from "next-auth/jwt";
 
 const AUTH_ROUTES = ["/dashboard", "/admin"];
 
+const normalizeRole = (role: unknown) => String(role ?? "").toUpperCase();
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -17,9 +19,9 @@ export async function middleware(request: NextRequest) {
   // 1. Redirect authenticated users away from login
   // ============================================================
   if (token && pathname === "/login") {
-    const role = String(token.role || "USER" || "user").toUpperCase();
+    const role = normalizeRole(token.role);
 
-    if (role === "ADMIN" || role === "admin") {
+    if (role === "ADMIN") {
       return NextResponse.redirect(
         new URL("/admin", request.url)
       );
@@ -48,7 +50,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(loginUrl);
     }
 
-    const role = String(token.role || "USER" || "user")
+    const role = normalizeRole(token.role);
 
     // ==========================================================
     // ADMIN AREA
@@ -81,7 +83,7 @@ export async function middleware(request: NextRequest) {
   // 3. Redirect "/" to the correct dashboard
   // ============================================================
   if (pathname === "/" && token) {
-    const role = String(token.role || "USER").toUpperCase();
+    const role = normalizeRole(token.role);
 
     if (role === "ADMIN") {
       return NextResponse.redirect(
