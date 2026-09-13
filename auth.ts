@@ -1,11 +1,11 @@
 // auth.ts - NextAuth v5 configuration (project root)
-import type { NextAuthOptions } from "next-auth"
+import type { NextAuthConfig } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import { connectToDB } from "@/lib/connectToDB"
 import { User } from "@/models/User"
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthConfig = {
   session: {
     strategy: "jwt",
   },
