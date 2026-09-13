@@ -86,7 +86,17 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       }
 
       success("Authentication Successful", "Welcome back to CapitalsFargoFX.")
-      router.push(isAdminRole(role) ? "/admin" : "/dashboard")
+      const callbackUrl = new URLSearchParams(window.location.search).get(
+        "callbackUrl"
+      )
+      const destination =
+        callbackUrl && callbackUrl.startsWith("/") && !callbackUrl.startsWith("//")
+          ? callbackUrl
+          : isAdminRole(role)
+            ? "/admin"
+            : "/dashboard"
+
+      router.push(destination)
     } catch (requestError) {
       const message =
         requestError instanceof Error

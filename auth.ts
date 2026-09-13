@@ -125,7 +125,7 @@ const authConfig: NextAuthConfig = {
     },
   },
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
 }
 
 // NextAuth v5 exports: handlers, auth, signIn, signOut
