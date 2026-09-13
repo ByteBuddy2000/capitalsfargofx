@@ -13,6 +13,7 @@ import { signIn } from "next-auth/react"
 import { Input } from "../ui/Input"
 import { Button } from "../ui/Button"
 import { useToast } from "../ui/Toast"
+import { useRouter } from "next/navigation"
 
 interface LoginFormProps {
   onSwitchToRegister: () => void
@@ -23,6 +24,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   onSwitchToRegister,
   onForgotPassword,
 }) => {
+  const router = useRouter()
   const [identifier, setIdentifier] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -73,7 +75,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       }
 
       success("Authentication Successful", "Welcome back to CapitalsFargoFX.")
-      window.location.assign("/dashboard")
+      router.push("/dashboard")
     } catch (requestError) {
       const message =
         requestError instanceof Error
