@@ -1,3 +1,4 @@
+// lib/plans.ts
 interface InvestmentPlan {
   readonly name: string
   readonly slug: string
