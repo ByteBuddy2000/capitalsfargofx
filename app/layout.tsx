@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import "@/app/globals.css"
 import Tawk from "@/components/tawk/Tawk"
+import SessionWrapper from "@/components/SessionWrapper/SessionWrapper"
 
 export const metadata: Metadata = {
   title: "CapitalsFargoFX",
   description: "Digital asset management and investment platform.",
-   icons: {
+  icons: {
     icon: "/favicon.png",
   },
 }
@@ -14,10 +15,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  
+
   return (
     <html lang="en">
-      <body cz-shortcut-listen="true">{children}</body>
+      <body cz-shortcut-listen="true">
+        <SessionWrapper>
+          {children}
+        </SessionWrapper>
+      </body>
       <Tawk />
     </html>
   )
