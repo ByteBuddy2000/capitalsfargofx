@@ -1,3 +1,4 @@
+// types/index.ts
 export type Role =
   | "USER"
   | "ADMIN"
