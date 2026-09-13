@@ -335,8 +335,8 @@ export interface AuditLog {
   action: AuditAction
   entity: string
   entityId: string
-  previousState?: any
-  newState?: any
+  previousState?: string
+  newState?: string
   ipAddress?: string
   timestamp: string
   notes?: string
