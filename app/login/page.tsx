@@ -6,6 +6,7 @@ import { LoginForm } from "@/components/auth/LoginForm"
 import { ForgotPasswordModal } from "@/components/auth/ForgotPasswordModal"
 import { ToastProvider } from "@/components/ui/Toast"
 import Image from "next/image"
+import Logo from "@/components/Logo/Logo"
 
 export default function LoginPage() {
   const [forgotPasswordOpen, setForgotPasswordOpen] = useState(false)
@@ -16,31 +17,7 @@ export default function LoginPage() {
         <header className="p-6">
           <div className="mx-auto flex max-w-7xl items-center justify-between">
             {/* Brand Logo */}
-            <Link
-              href="/"
-              className="group flex cursor-pointer items-center gap-2.5 text-left focus:outline-none"
-            >
-              <div className="">
-                <Image
-                  src="/CapitalsFargofx-logo.png"
-                  width={1055}
-                  height={1055}
-                  alt="CapitalsFargoFX Logo"
-                  className="h-20 w-20"
-                  priority
-                />
-              </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xl font-extrabold tracking-tight text-white">
-                    CapitalsFargo<span className="text-blue-400">FX</span>
-                  </span>
-                </div>
-                <p className="-mt-0.5 text-[10px] font-medium tracking-wider text-slate-400 uppercase">
-                  Digital Asset Management
-                </p>
-              </div>
-            </Link>
+        <Logo />
 
             {/* <Link
               href="/"

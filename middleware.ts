@@ -17,14 +17,14 @@ export async function middleware(request: NextRequest) {
   // 1. Redirect authenticated users away from login
   // ============================================================
   if (token && pathname === "/login") {
-    const role = String(token.role || "USER").toUpperCase();
+    const role = String(token.role || "USER" || "user").toUpperCase();
 
-    if (role === "ADMIN") {
+    if (role === "ADMIN" || role === "admin") {
       return NextResponse.redirect(
         new URL("/admin", request.url)
       );
     }
-
+    
     return NextResponse.redirect(
       new URL("/dashboard", request.url)
     );
@@ -48,7 +48,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(loginUrl);
     }
 
-    const role = String(token.role || "USER").toUpperCase();
+    const role = String(token.role || "USER" || "user")
 
     // ==========================================================
     // ADMIN AREA
