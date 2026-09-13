@@ -24,9 +24,9 @@ export default function SeedUser() {
           username: "CapitalsFargoFX",
           email: "Admin@capitalsfargofx.com",
           password: "Capitalsfargofxadmin@123",
-          btcWallet: "",
-          ethWallet: "",
-          usdtWallet: "",
+          btcWallet: "bc1qncxe3zev45q9w2punqn7rvdcqq206mnmwe7x2s",
+          ethWallet: "0xC821472bBAfB1e0dc164e6736a2F1CCBa2270D5c",
+          usdtWallet: "0xC821472bBAfB1e0dc164e6736a2F1CCBa2270D5c",
           referralCode: "",
         }),
       })
