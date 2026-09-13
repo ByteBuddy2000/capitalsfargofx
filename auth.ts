@@ -87,7 +87,7 @@ const authConfig: NextAuthConfig = {
       if (user) {
         token.id = user.id
         token.email = user.email
-        token.role = user.role as "USER" | "ADMIN" | "user" | "admin"
+        token.role = user.role as "USER" | "ADMIN"
         token.name = user.name || user.fullName
         token.username = user.username
         token.status = user.status as
@@ -103,7 +103,7 @@ const authConfig: NextAuthConfig = {
         session.user._id = token.id as string
         session.user.email = token.email as string
         session.user.name = (token.name as string) || undefined
-        session.user.role = token.role as "USER" | "ADMIN" | "user" | "admin"
+        session.user.role = token.role as "USER" | "ADMIN"
         session.user.username = token.username as string | undefined
         session.user.status = token.status as
           "ACTIVE" | "SUSPENDED" | "BANNED" | undefined

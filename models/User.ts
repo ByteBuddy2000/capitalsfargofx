@@ -1,7 +1,7 @@
 // models/User.ts
 import mongoose, { type Model, type Schema, type Types } from "mongoose"
 
-export type UserRole = "USER" | "ADMIN" | "user" | "admin"
+export type UserRole = "USER" | "ADMIN"
 export type UserStatus = "ACTIVE" | "SUSPENDED" | "BANNED"
 export type KycStatus = "VERIFIED" | "PENDING" | "UNVERIFIED"
 
