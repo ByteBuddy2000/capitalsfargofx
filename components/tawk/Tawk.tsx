@@ -22,7 +22,7 @@ const Tawk = () => {
     const script = document.createElement("script");
     script.id = "tawk-script";
     script.async = true;
-    script.src = "https://embed.tawk.to/69a6a3c59c0b151c351244a7/1jipevft6";
+    script.src = "https://embed.tawk.to/6aa62e989117af34473d9f7a/1k2cic1vp";
     script.charset = "UTF-8";
     script.setAttribute("crossorigin", "*");
 
