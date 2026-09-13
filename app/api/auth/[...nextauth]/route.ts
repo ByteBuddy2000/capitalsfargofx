@@ -1,6 +1,8 @@
 // /app/api/auth/[...nextauth]/route.ts
-// NextAuth v5: use handlers from root auth.ts
 
-import { handlers } from "@/auth"
+import { authOptions } from "@/auth"
+import NextAuth from "next-auth"
 
-export const { GET, POST } = handlers
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }
