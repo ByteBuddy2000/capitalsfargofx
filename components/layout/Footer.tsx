@@ -3,14 +3,11 @@
 import React from "react"
 import { useRouter } from "next/navigation"
 import {
-  ShieldCheck,
   Mail,
   Send,
-  ExternalLink,
   ArrowUpRight,
   Lock,
   Cpu,
-  CheckCircle2,
 } from "lucide-react"
 import Logo from "../Logo/Logo"
 
