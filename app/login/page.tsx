@@ -1,11 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { LoginForm } from "@/components/auth/LoginForm"
 import { ForgotPasswordModal } from "@/components/auth/ForgotPasswordModal"
 import { ToastProvider } from "@/components/ui/Toast"
-import Image from "next/image"
 import Logo from "@/components/Logo/Logo"
 
 export default function LoginPage() {
