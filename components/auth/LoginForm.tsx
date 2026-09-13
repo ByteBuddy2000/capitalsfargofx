@@ -1,7 +1,14 @@
 "use client"
 
 import React, { useState } from "react"
-import { User as UserIcon, Lock, ArrowRight, ShieldCheck } from "lucide-react"
+import {
+  User as UserIcon,
+  Lock,
+  ArrowRight,
+  ShieldCheck,
+  Eye,
+  EyeOff,
+} from "lucide-react"
 import { signIn } from "next-auth/react"
 import { Input } from "../ui/Input"
 import { Button } from "../ui/Button"
@@ -18,6 +25,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
 }) => {
   const [identifier, setIdentifier] = useState("")
   const [password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   const { success, error: toastError } = useToast()
@@ -155,7 +163,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         <div className="space-y-1">
           <Input
             label="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="••••••••••••"
             value={password}
             onChange={(e) => {
@@ -163,6 +171,21 @@ export const LoginForm: React.FC<LoginFormProps> = ({
               if (error) setError("")
             }}
             leftIcon={<Lock className="h-4 w-4" />}
+            rightIcon={
+              <button
+                type="button"
+                onClick={() => setShowPassword((visible) => !visible)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-pressed={showPassword}
+                className="cursor-pointer rounded-md p-1 text-slate-400 transition-colors hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+              >
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </button>
+            }
             autoComplete="current-password"
             required
           />
