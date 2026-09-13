@@ -49,7 +49,7 @@ export default function NotFound() {
 
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Button
-
+              onClick={() => window.location.assign("/")}
               className="w-full bg-linear-to-r from-blue-600 to-cyan-600 px-8 py-3 font-semibold text-white hover:from-blue-700 hover:to-cyan-700 sm:w-auto"
             >
               <Home className="inline h-4 w-4" />
@@ -64,6 +64,7 @@ export default function NotFound() {
               <span className="ml-2">Go Back</span>
             </Button>
           </div>
+
         </motion.div>
         {/* Helpful Links */}
         <div className="mt-12 space-y-2 text-sm text-slate-500">
