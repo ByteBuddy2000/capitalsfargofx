@@ -11,10 +11,8 @@ import {
   ShieldCheck,
   Lock,
   Layers,
-  CheckCircle2,
   ArrowRight,
   Database,
-  Cpu,
   Key,
 } from "lucide-react"
 
@@ -75,7 +73,7 @@ export const AssetsPage: React.FC = () => {
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/80 p-3.5">
-                  <Key className="mt-0.5 h-5 w-5 flex-shrink-0 text-cyan-400" />
+                  <Key className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" />
                   <div>
                     <div className="text-sm font-bold text-white">
                       3-of-5 Quorum Consensus
@@ -88,7 +86,7 @@ export const AssetsPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/80 p-3.5">
-                  <Database className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-400" />
+                  <Database className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" />
                   <div>
                     <div className="text-sm font-bold text-white">
                       Segregated Portfolio Balances
@@ -101,7 +99,7 @@ export const AssetsPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/80 p-3.5">
-                  <ShieldCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-400" />
+                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
                   <div>
                     <div className="text-sm font-bold text-white">
                       Zero Network Surcharges on Deposits
@@ -162,7 +160,7 @@ export const AssetsPage: React.FC = () => {
               <div className="pt-2">
                 <button
                   onClick={() => onOpenInvestModal()}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-blue-600 to-cyan-600 px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all"
                 >
                   <span>Open Capital Allocation Terminal</span>
                   <ArrowRight className="h-4 w-4" />
