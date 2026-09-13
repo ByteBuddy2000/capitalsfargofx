@@ -35,9 +35,9 @@ const Tawk = () => {
   }, []);
 
   return (
-    <div className="z-100 fixed bottom-20 right-0" title="Chat with us">
+    <span className="z-100 fixed bottom-20 right-0" title="Chat with us">
       {/* Tawk widget loads automatically; no UI needed */}
-    </div>
+    </span>
   );
 };
 
