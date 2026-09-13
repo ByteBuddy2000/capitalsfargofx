@@ -3,20 +3,17 @@
 import React from "react"
 import { useRouter } from "next/navigation"
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs"
-import { CURRENT_PLANS, formatCurrency } from "@/lib/plans"
+import { formatCurrency } from "@/lib/plans"
 import { InvestmentPlansSection } from "@/components/sections/InvestmentPlansSection"
 import { YieldSimulator } from "@/components/simulator/YieldSimulator"
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection"
 import {
   Layers,
-  Clock,
-  ShieldCheck,
   Check,
   ArrowRight,
-  Sparkles,
   Info,
-  AlertCircle,
 } from "lucide-react"
+import { CURRENT_PLANS } from "@/lib/defaultPlans"
 
 export const InvestmentPlansPage: React.FC = () => {
   const router = useRouter()
@@ -147,7 +144,7 @@ export const InvestmentPlansPage: React.FC = () => {
           </div>
 
           <div className="mt-6 flex items-start gap-2.5 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs text-slate-400">
-            <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-400" />
+            <Info className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
             <p>
               Capital ranges reflect active investment minimums. High-net-worth
               institutional allocations exceeding standard limits are

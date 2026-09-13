@@ -33,12 +33,12 @@ export const SupportedCryptoSection: React.FC = () => {
         </div>
 
         {/* Crypto Rails Cards (Horizontal scroll on mobile, 3-col grid on desktop) */}
-        <div className="no-scrollbar flex snap-x snap-mandatory space-x-5 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-8 md:space-x-0">
+        <div className="no-scrollbar flex snap-x snap-mandatory space-x-5 overflow-x-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-x-0">
           {SUPPORTED_CRYPTOS.map((crypto) => (
             <div
               key={crypto.symbol}
               id={`crypto-rail-${crypto.symbol.toLowerCase()}`}
-              className="group flex w-[280px] flex-shrink-0 snap-center flex-col justify-between rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-sm backdrop-blur-md transition-all duration-200 hover:border-emerald-500/40 hover:shadow-xl sm:w-[320px] sm:p-8 md:w-auto"
+              className="group flex w-70 shrink-0 snap-center flex-col justify-between rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-sm backdrop-blur-md transition-all duration-200 hover:border-emerald-500/40 hover:shadow-xl sm:w-[320px] sm:p-8 md:w-auto"
             >
               <div>
                 {/* Header with symbol and badge */}
@@ -70,16 +70,16 @@ export const SupportedCryptoSection: React.FC = () => {
                 {/* Technical Specifications */}
                 <div className="space-y-3 border-y border-slate-800 py-4 font-mono text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="font-sans text-slate-400">
+                    <span className="text-[10px] font-sans text-slate-400">
                       Settlement Network:
                     </span>
-                    <span className="max-w-[170px] truncate text-right font-bold text-slate-200">
+                    <span className="max-w-42.5 truncate text-right font-bold text-slate-200">
                       {crypto.network}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="font-sans text-slate-400">
+                    <span className="text-[10px] font-sans text-slate-400">
                       Deposit Fee:
                     </span>
                     <span className="font-bold text-emerald-400">
@@ -88,7 +88,7 @@ export const SupportedCryptoSection: React.FC = () => {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="font-sans text-slate-400">
+                    <span className="text-[10px] font-sans text-slate-400">
                       Confirmation Speed:
                     </span>
                     <span className="font-bold text-blue-400">

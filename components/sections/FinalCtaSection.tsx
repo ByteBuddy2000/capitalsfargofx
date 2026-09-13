@@ -85,7 +85,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
           </button>
         </div>
 
-        <div className="pt-4 font-mono text-xs text-slate-400">
+        <div className="hidden pt-4 font-mono text-xs text-slate-400">
           Cold-Vault Cryptographic Security · Automated Maturity Epochs · 24/7
           Support Desk
         </div>
