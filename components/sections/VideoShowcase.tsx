@@ -264,7 +264,7 @@ export const VideoShowcaseSectionOne: React.FC = () => {
     <>
       <section
         id="video-showcase-fundamentals"
-        className="bg-gradient-to-b from-transparent via-slate-900/30 to-transparent py-20"
+        className="bg-linear-to-b from-transparent via-slate-900/30 to-transparent py-20"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
@@ -349,7 +349,7 @@ export const VideoShowcaseSectionOne: React.FC = () => {
                   <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-tr from-slate-950 via-slate-900/65 to-blue-900/50 transition-opacity duration-300 group-hover:via-slate-900/55" />
 
                   {/* Geometric Grid */}
-                  <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+                  <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] bg-size-[16px_16px]] opacity-20" />
 
                   {/* Content */}
                   <div className="pointer-events-none absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-8">

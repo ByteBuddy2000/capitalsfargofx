@@ -108,7 +108,7 @@ export const Navbar: React.FC = () => {
             <Link
               id="nav-create-account-btn"
               href="/register"
-              className="group flex cursor-pointer items-center gap-1.5 rounded-lg border border-transparent bg-gradient-to-r from-blue-600 to-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-emerald-700 hover:shadow-lg hover:shadow-blue-500/20"
+              className="group flex cursor-pointer items-center gap-1.5 rounded-lg border border-transparent bg-linear-to-r from-blue-600 to-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-emerald-700 hover:shadow-lg hover:shadow-blue-500/20"
             >
               <span>Sign Up</span>
 
@@ -139,7 +139,7 @@ export const Navbar: React.FC = () => {
             <Link
               id="nav-create-account-btn"
               href="/register"
-              className="group flex cursor-pointer items-center gap-1.5 rounded-lg border border-transparent bg-gradient-to-r from-blue-600 to-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-emerald-700 hover:shadow-lg hover:shadow-blue-500/20"
+              className="group flex cursor-pointer items-center gap-1.5 rounded-lg border border-transparent bg-linear-to-r from-blue-600 to-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-emerald-700 hover:shadow-lg hover:shadow-blue-500/20"
             >
               <span>Sign Up</span>
 
@@ -220,7 +220,7 @@ export const Navbar: React.FC = () => {
               <Link
                 id="mobile-register-btn"
                 href="/register"
-                className="flex cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-emerald-700"
+                className="flex cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-linear-to-r from-blue-600 to-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-emerald-700"
               >
                 <span>Register</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
