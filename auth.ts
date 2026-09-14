@@ -125,7 +125,7 @@ export const authOptions: NextAuthConfig = {
     },
   },
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
 }
 
 export const { handlers, auth } = NextAuth(authOptions)
